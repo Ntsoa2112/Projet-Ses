@@ -1,0 +1,27 @@
+/* CSS additionnelle */
+body {padding:50px;}
+
+.btn {
+   -webkit-transition: 0.5s ease;
+   -moz-transition: 0.5s;
+   -ms-transition: 0.5s;
+   -o-transition: 0.5s;
+   transition: 0.5s;
+}
+
+.btn.btn-primary {
+	font-size: 16px;
+	border: 2px solid #41951F;
+    background:transparent;
+	padding:15px 40px;
+	text-transform:uppercase;
+    border-radius:30px;
+    color:#f7941d;
+}
+
+.btn.btn-primary:hover {
+    background:#41951F;
+    border-radius:0;
+    border: 2px solid #41951F;
+    color:white;
+}
