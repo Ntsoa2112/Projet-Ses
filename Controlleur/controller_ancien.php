@@ -1,18 +1,18 @@
 <?php
   //require_once("../Modele/Model.php");
-  class Connect{
-    protected function dbconnect(){
-      $bdd = new PDO("mysql:host=localhost;dbname=sesame", "sserver", "sserver") or die("Not connect");
-      return $bdd;
-    }
-  }
-  class Query_bdd extends Connect{
-    public function inscription($nom, $prenom, $mail, $mention, $dortoir, $passwd_hash){
-      $bdd = $this->dbconnect();
-      $inscription_insert = $bdd->prepare("INSERT INTO ETUDIANT(nom, prenom, mail, mention, dortoir, mdp) VALUES(?, ?, ?, ?, ?, ?)");
-      $inscription_insert->execute(array($nom, $prenom, $mail, $mention, $dortoir, $passwd_hash));
-      return $inscription_insert;
-    }
+class Connect{
+	protected function dbconnect(){
+		$bdd = new PDO("mysql:host=localhost;dbname=sesame", "sserver", "sserver") or die("Not connect");
+		return $bdd;
+	}
+}
+class Query_bdd extends Connect{
+	public function inscription($nom, $prenom, $mail, $mention, $dortoir, $passwd_hash){
+		$bdd = $this->dbconnect();
+		$inscription_insert = $bdd->prepare("INSERT INTO ETUDIANT(nom, prenom, mail, mention, dortoir, mdp) VALUES(?, ?, ?, ?, ?, ?)");
+		$inscription_insert->execute(array($nom, $prenom, $mail, $mention, $dortoir, $passwd_hash));
+		return $inscription_insert;
+}
 
   if(!empty($_GET["action"])){
     $action = htmlspecialchars($_GET["action"]);
