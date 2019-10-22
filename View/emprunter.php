@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-
-
 <html lang="fr" dir="ltr">
-
 	  <head>
 			  <meta charset="utf-8">
 			  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -115,7 +112,7 @@
     				<h3>Fer à repasser</h3>
     			</div>
 
-    			<form id="contactForm" name="contact" role="form" action="../Controlleur/controller.php?action=emprunter_materiel$type=fer" method="post">
+    			<form id="contactForm" name="contact" role="form" action="../Controlleur/controller.php?action=emprunter_materiel&type=fer" method="post">
     				<div class="modal-body">
     					<div class="form-group">
     						<label for="prenom">Prenom</label>
@@ -123,7 +120,7 @@
     					</div>
     					<div class="form-group">
     						<label for="numero">Numero</label>
-    						<input type="text" name="email" class="form-control">
+    						<input type="text" name="numero" class="form-control">
     					</div>
 
 							<div class="form-group half" >

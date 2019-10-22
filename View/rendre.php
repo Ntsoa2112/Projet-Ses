@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
-
 	  <head>
 			  <meta charset="utf-8">
 				<link rel="stylesheet" href="../Public/Boostrap/bootstrap.min.css">
@@ -11,27 +10,14 @@
 	  </head>
 
   <body>
-
-
-						<div class="button">
-										<span id="contact"><button type="button" class="btn btn-info btn" data-toggle="modal" data-target="#contact-modal1">Clé</button></span>
-										<span id="contact"><button type="button" class="btn btn-info btn" data-toggle="modal" data-target="#contact-modal2">Fer à repasser</button></span>
-										<span id="contact"><button type="button" class="btn btn-info btn" data-toggle="modal" data-target="#contact-modal3">Guitare</button></span
-										<span id="contact"><button type="button" class="btn btn-info btn" data-toggle="modal" data-target="#contact-modal4">Ballon</button></span>
-										<span id="contact"><button type="button" class="btn btn-info btn" data-toggle="modal" data-target="#contact-modal5">Boules</button></span>
-						</div>
-
-
-
-
-	<div
-
-
-
-
-
-
-
+		<div class="button">
+			<span id="contact"><button type="button" class="btn btn-info btn" data-toggle="modal" data-target="#contact-modal1">Clé</button></span>
+			<span id="contact"><button type="button" class="btn btn-info btn" data-toggle="modal" data-target="#contact-modal2">Fer à repasser</button></span>
+			<span id="contact"><button type="button" class="btn btn-info btn" data-toggle="modal" data-target="#contact-modal3">Guitare</button></span
+			<span id="contact"><button type="button" class="btn btn-info btn" data-toggle="modal" data-target="#contact-modal4">Ballon</button></span>
+			<span id="contact"><button type="button" class="btn btn-info btn" data-toggle="modal" data-target="#contact-modal5">Boules</button></span>
+		</div>
+	<div>
     <div id="contact-modal1" class="modal fade" role="dialog">
     	<div class="modal-dialog">
     		<div class="modal-content">
@@ -329,9 +315,6 @@
 
                         <option value="P1">P1</option>
                         <option value="P2">P2</option>
-
-
-
                  </select>
 					</div>
     				<div class="modal-footer">
@@ -345,12 +328,5 @@
     		</div>
     	</div>
     </div>
-
-
-
-
-
-
-
   </body>
 </html>

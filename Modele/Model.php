@@ -41,13 +41,10 @@ class Query_bdd extends Connect{
     $bdd = $this->dbconnect();
     $rendre_nondispo_materiel = $bdd->prepare("UPDATE MATERIEL SET dispo='0' WHERE nom=? and correspondance=?");
     $rendre_nondispo_materiel->execute(array($type, $correspondance));
-    if($rendre_nondispo_materiel === false){
-      return false;
-    }
-    else{
-      $creation_emprunt = $bdd->prepare("INSERT INTO EMPRUNT(id_etudiant, id_materiel, nom, correspondance) VALUES(?,?,?,?,?)");
-      $creation_emprunt->execute(array($id_etudiant, $id_mat, $type, $correspondance));
-      return $creation_emprunt;
-    }
+
+    $creation_emprunt = $bdd->prepare("INSERT INTO EMPRUNT(id_etudiant, id_materiel, nom, correspondance, date_emprunt) VALUES(?,?,?,?, NOW())");
+    $creation_emprunt->execute(array($id_etudiant, $id_mat, $type, $correspondance));
+    return $creation_emprunt;
+
   }
 }
