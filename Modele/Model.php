@@ -1,6 +1,6 @@
 <?php
 	require_once("ConnectBdd.php");
-	
+
 	class Query_bdd extends Connect{
 		public function inscription($nom, $prenom, $mail, $mention, $dortoir, $passwd){
 		$bdd = $this->dbconnect();
@@ -46,5 +46,22 @@
 		$creation_emprunt = $bdd->prepare("INSERT INTO EMPRUNT(id_etudiant, id_materiel, nom, correspondance, date_emprunt) VALUES(?,?,?,?, NOW())");
 		$creation_emprunt->execute(array($id_etudiant, $id_mat, $type, $correspondance));
 		return $creation_emprunt;
+		}
+
+		public function verification_emprunt($correspondance, $id_etudiant, $id_mat){
+			$bdd = $this->dbconnect();
+			$verification_emprunt = $bdd->prepare("SELECT * FROM EMPRUNT WHERE id_etudiant = ? and id_materiel = ? and correspondance = ? and date_retour IS NULL");
+			$verification_emprunt->execute(array($id_etudiant, $id_mat, $correspondance));
+			return $verification_emprunt;
+		}
+
+		public function rendre_dispo_materiel($type, $correspondance, $id_etudiant, $id_mat){
+			$bdd = $this->dbconnect();
+			$rendre_dispo_materiel = $bdd->prepare("UPDATE EMPRUNT SET date_retour = NOW() WHERE id_etudiant=? and id_materiel=? and correspondance=?");
+			$rendre_dispo_materiel->execute(array($id_etudiant, $id_mat, $correspondance));
+
+			$rendre_dispo_materiel_mat = $bdd->prepare("UPDATE MATERIEL SET dispo='1' WHERE id_mat=? and correspondance=?");
+			$rendre_dispo_materiel_mat->execute(array($id_mat, $correspondance));
+			return $rendre_dispo_materiel;
+		}
 	}
-}

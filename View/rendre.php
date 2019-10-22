@@ -13,10 +13,39 @@
 		<div class="button">
 			<span id="contact"><button type="button" class="btn btn-info btn" data-toggle="modal" data-target="#contact-modal1">Clé</button></span>
 			<span id="contact"><button type="button" class="btn btn-info btn" data-toggle="modal" data-target="#contact-modal2">Fer à repasser</button></span>
-			<span id="contact"><button type="button" class="btn btn-info btn" data-toggle="modal" data-target="#contact-modal3">Guitare</button></span
+			<span id="contact"><button type="button" class="btn btn-info btn" data-toggle="modal" data-target="#contact-modal3">Guitare</button></span>
 			<span id="contact"><button type="button" class="btn btn-info btn" data-toggle="modal" data-target="#contact-modal4">Ballon</button></span>
 			<span id="contact"><button type="button" class="btn btn-info btn" data-toggle="modal" data-target="#contact-modal5">Boules</button></span>
 		</div>
+
+		<?php
+			if(!empty($_GET["action"])){
+				$action = htmlspecialchars($_GET["action"]);
+				$type = htmlspecialchars($_GET["type"]);
+				$correspondance = htmlspecialchars($_GET["correspondance"]);
+				if($action == "erreur_rendre"){
+					?>
+					<br><span>Matériel: <?=$type?></span>
+					<br><span>Correspondance: <?=$correspondance?></span>
+					<br><span>Ce matériel est disponible dans le stock, donc, vérifier le matériel à rendre</span>
+					<?php
+				}
+				elseif($action == "erreur_etudiant_rendre"){
+					?>
+					<br><span>Matériel: <?=$type?></span>
+					<br><span>Correspondance: <?=$correspondance?></span>
+					<br><span>Ce n'est pas vous qui a emprunté ce matériel</span>
+					<?php
+				}
+				elseif($action == "rendre_succee"){
+					?>
+					<br><span>Matériel: <?=$type?></span>
+					<br><span>Correspondance: <?=$correspondance?></span>
+					<br><span>Le matériel a été bien rendu</span>
+					<?php
+				}
+			}
+	  ?>
 
 		<div id="contact-modal1" class="modal fade" role="dialog">
 			<div class="modal-dialog">

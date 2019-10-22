@@ -1,7 +1,7 @@
 <?php
-	
+
 	require_once("../Modele/Model.php");
-	
+
 	if(!empty($_GET["action"])){
 		$action = htmlspecialchars($_GET["action"]);
 		if($action == "rendre"){
@@ -61,13 +61,14 @@
 			$prenom_bdd = $verification_li["prenom"];
 			$mdp_bdd = $verification_li["mdp"];
 			if($prenom === $prenom_bdd && $passwd === $mdp_bdd){
+				$type = $_GET["type"];
+				$correspondance = $_POST["correspondance"];
+				$verify_disponibilite = $query-> verify_disponibilite($type, $correspondance);
+				$verify_disponibilite_li = $verify_disponibilite->fetch();
+				$dispo = $verify_disponibilite_li["dispo"];
+				$id_mat = $verify_disponibilite_li["id_mat"];
+
 				if($action == "emprunter_materiel"){
-					$type = $_GET["type"];
-					$correspondance = $_POST["correspondance"];
-					$verify_disponibilite = $query-> verify_disponibilite($type, $correspondance);
-					$verify_disponibilite_li = $verify_disponibilite->fetch();
-					$dispo = $verify_disponibilite_li["dispo"];
-					$id_mat = $verify_disponibilite_li["id_mat"];
 					if($dispo == 1){
 						$rendre_nondispo_materiel = $query->rendre_nondispo_materiel($type, $correspondance, $id_etudiant, $id_mat);
 						if($rendre_nondispo_materiel === false){
@@ -79,6 +80,30 @@
 					}
 					else{
 						header("location:../View/emprunter.php?action=non_disponible&type=$type&correspondance=$correspondance");
+					}
+				}
+
+				elseif($action == "rendre_materiel"){
+					if($dispo == 0){
+						$verification_emprunt = $query->verification_emprunt($correspondance, $id_etudiant, $id_mat);
+						$verification_emprunt_li = $verification_emprunt->fetch();
+						$id_etudiant_bdd = $verification_emprunt_li["id_etudiant"];
+						$id_mat_bdd = $verification_emprunt_li["id_materiel"];
+						if($id_etudiant == $id_etudiant_bdd && $id_mat == $id_mat_bdd){
+							$rendre_dispo_materiel = $query->rendre_dispo_materiel($type, $correspondance, $id_etudiant, $id_mat);
+							if($rendre_dispo_materiel === false){
+								echo "Erreur rendre_dispo_materiel";
+							}
+							else{
+								header("location:../View/rendre.php?action=rendre_succee&type=$type&correspondance=$correspondance");
+							}
+						}
+						else{
+							header("location:../View/rendre.php?action=erreur_etudiant_rendre&type=$type&correspondance=$correspondance");
+						}
+					}
+					else{
+						header("location:../View/rendre.php?action=erreur_rendre&type=$type&correspondance=$correspondance");
 					}
 				}
 			}
