@@ -41,7 +41,6 @@
 
 
     }
-
      ?>
 
     <div id="inscrire" class="modal fade" role="dialog">
