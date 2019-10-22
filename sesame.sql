@@ -29,9 +29,9 @@ CREATE TABLE `EMPRUNT` (
   `nom` varchar(50) NOT NULL,
   `correspondance` varchar(50) DEFAULT NULL,
   `date_emprunt` datetime NOT NULL DEFAULT current_timestamp(),
-  `date_de_retour` datetime DEFAULT NULL,
+  `date_retour` datetime DEFAULT NULL,
   PRIMARY KEY (`id_emprunt`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +40,7 @@ CREATE TABLE `EMPRUNT` (
 
 LOCK TABLES `EMPRUNT` WRITE;
 /*!40000 ALTER TABLE `EMPRUNT` DISABLE KEYS */;
+INSERT INTO `EMPRUNT` VALUES (1,7,36,'boulle','P2','2019-10-21 15:18:54',NULL),(2,7,12,'clé','Salle E4','2019-10-21 15:20:24',NULL),(3,7,23,'fer','IG2','2019-10-21 22:18:09',NULL),(4,7,20,'clé','Intendance','2019-10-22 12:51:07',NULL),(5,7,26,'fer','IF2','2019-10-22 12:51:29',NULL);
 /*!40000 ALTER TABLE `EMPRUNT` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -85,7 +86,7 @@ CREATE TABLE `MATERIEL` (
   `correspondance` varchar(50) DEFAULT NULL,
   `dispo` tinyint(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_mat`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -94,7 +95,7 @@ CREATE TABLE `MATERIEL` (
 
 LOCK TABLES `MATERIEL` WRITE;
 /*!40000 ALTER TABLE `MATERIEL` DISABLE KEYS */;
-INSERT INTO `MATERIEL` VALUES (5,'clé','Salle C1',0),(6,'clé','Salle C2',0),(7,'clé','Salle C3',0),(8,'clé','Salle C4',1),(9,'clé','Salle E1',1),(10,'clé','Salle E2',1),(11,'clé','Salle E3',1),(12,'clé','Salle E4',1),(13,'clé','Club Journalisme',1),(14,'clé','Club Informatique',0),(15,'clé','Club Cuisine',1),(16,'clé','Club Sport',1),(17,'clé','Club Théatre',1),(18,'clé','Club Musique',1),(19,'clé','Laboratoire',1),(20,'clé','Intendance',1);
+INSERT INTO `MATERIEL` VALUES (5,'clé','Salle C1',0),(6,'clé','Salle C2',0),(7,'clé','Salle C3',0),(8,'clé','Salle C4',1),(9,'clé','Salle E1',1),(10,'clé','Salle E2',1),(11,'clé','Salle E3',1),(12,'clé','Salle E4',0),(13,'clé','Club Journalisme',1),(14,'clé','Club Informatique',0),(15,'clé','Club Cuisine',1),(16,'clé','Club Sport',1),(17,'clé','Club Théatre',1),(18,'clé','Club Musique',1),(19,'clé','Laboratoire',0),(20,'clé','Intendance',0),(21,'fer','IG',0),(22,'fer','IG1',1),(23,'fer','IG2',0),(24,'fer','IF',0),(25,'fer','IF1',0),(26,'fer','IF2',0),(27,'guitare','G1',0),(28,'guitare','G2',0),(29,'ballon','Foot-ball',0),(30,'ballon','Basket-ball',0),(31,'ballon','Hand-ball',1),(32,'ballon','Volley-ball-ball',1),(35,'boulle','P1',0),(36,'boulle','P2',0);
 /*!40000 ALTER TABLE `MATERIEL` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -107,4 +108,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-10-21 12:50:18
+-- Dump completed on 2019-10-22 12:56:10
